@@ -5,7 +5,6 @@ const Context = React.createContext();
 const CoinContextProvider = ({ children }) => {
   const [coins, setCoins] = useState([]);
   const [search, setSearch] = useState("");
-  const [isFavorite, setIsFavorite] = useState(false);
   const [favorites, setFavorites] = useState([]);
 
   const handleChange = (e) => {
@@ -23,6 +22,19 @@ const CoinContextProvider = ({ children }) => {
 
   function clearFavorites() {
     setFavorites([]);
+  }
+
+  function starIcon(id, item) {
+    const addedToFavorites = favorites.find((favorite) => favorite.id === id);
+    if (addedToFavorites) {
+      return (
+        <i className="fas fa-star" onClick={() => removeFromFavorites(id)}></i>
+      );
+    } else {
+      return (
+        <i className="far fa-star" onClick={() => addToFavorites(item)}></i>
+      );
+    }
   }
 
   useEffect(() => {
@@ -45,10 +57,8 @@ const CoinContextProvider = ({ children }) => {
       <Context.Provider
         value={{
           filteredCoins,
-          favorites,
           handleChange,
-          addToFavorites,
-          removeFromFavorites,
+          starIcon,
         }}
       >
         {children}
