@@ -1,12 +1,13 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
+import { CoinContextProvider } from "./CoinContextProvider";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <CoinContextProvider>
+      <App />
+    </CoinContextProvider>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
-
