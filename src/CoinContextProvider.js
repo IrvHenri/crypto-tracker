@@ -59,6 +59,7 @@ const CoinContextProvider = ({ children }) => {
           filteredCoins,
           handleChange,
           starIcon,
+          coins,
         }}
       >
         {children}

@@ -10,7 +10,7 @@ const CoinTable = () => {
       <caption>Today's Cryptocurrency Prices</caption>
       <thead>
         <tr>
-          <th></th>
+          <th className="star-column"></th>
           <th className="table-header table-row-first">
             <button type="button" onClick={() => requestSort("name")}>
               Name
@@ -50,7 +50,7 @@ const CoinTable = () => {
             <td className="table-row-first">
               <div>
                 <img src={item.image} alt=" coin logo" className="coin-image" />
-                {item.name} {item.symbol}
+                {item.name} <span>{item.symbol.toUpperCase()}</span>
               </div>
             </td>
             <td>${item.current_price}</td>
